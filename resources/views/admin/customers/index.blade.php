@@ -14,7 +14,7 @@
 <table class="table table-striped table-sm">
     <thead>
       <tr>
-        <th>iD</th>
+        <th>iD customer</th>
         <th>Firstname</th>
         <th>Lastname</th>
         <th>email</th>
