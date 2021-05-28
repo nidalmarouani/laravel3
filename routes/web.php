@@ -45,3 +45,5 @@ Route::middleware(['auth','checkStatus'])->group(function () {
 Route::get('/product', function () {
       return view('productshop');
   });
+
+  

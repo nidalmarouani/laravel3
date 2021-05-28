@@ -1924,9 +1924,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    console.log('Component mounted.');
+    this.loadAllProducts();
+  },
+  data: function data() {
+    return {
+      products: []
+    };
+  },
+  methods: {
+    loadAllProducts: function loadAllProducts() {
+      var _this = this;
+
+      axios.get('/api/products').then(function (response) {
+        _this.products = response.data;
+        console.log(_this.products);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    }
   }
 });
 
@@ -37593,30 +37628,91 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "container px-4 px-lg-5 mt-5" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
+        },
+        [
+          _vm._l(_vm.products, function(product) {
+            return _c("div", { key: product.id, staticClass: "col mb-5" }, [
+              _c("div", { staticClass: "card h-100" }, [
+                _c("img", {
+                  staticClass: "card-img-top",
+                  attrs: { src: product.picture, alt: "..." }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body p-4" }, [
+                  _c("div", { staticClass: "text-center" }, [
+                    _c("h5", { staticClass: "fw-bolder" }, [
+                      _vm._v(_vm._s(product.name))
+                    ]),
+                    _vm._v(" "),
+                    _vm._v(
+                      "\n                       " +
+                        _vm._s(product.unit_price) +
+                        "\n                    "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(0, true)
+              ])
+            ])
+          }),
+          _vm._v(" "),
+          _vm._m(1)
+        ],
+        2
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
-          ])
+    return _c(
+      "div",
+      { staticClass: "card-footer p-4 pt-0 border-top-0 bg-transparent" },
+      [
+        _c("div", { staticClass: "text-center" }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-outline-dark mt-auto",
+              attrs: { href: "#" }
+            },
+            [_vm._v("View options")]
+          )
         ])
-      ])
-    ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "card-footer p-4 pt-0 border-top-0 bg-transparent" },
+      [
+        _c("div", { staticClass: "text-center" }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-outline-dark mt-auto",
+              attrs: { href: "#" }
+            },
+            [_vm._v("Add to cart")]
+          )
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

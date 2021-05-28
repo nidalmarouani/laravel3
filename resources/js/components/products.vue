@@ -1,19 +1,19 @@
 <template>
     <div class="container">
-        <div class="container px-4 px-lg-5 mt-5">
+    <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
-            <div class="col mb-5" v-for="product in products" :key="product.id">
+          <div v-for="product in products" :key="product.id"></div>
+            <div class="col mb-5">
                 <div class="card h-100">
                     <!-- Product image-->
-                    <img class="card-img-top" :src="product.picture" alt="..." />
+                    <img class="card-img-top" src="{{product.picture}}" alt="..." />
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
                             <!-- Product name-->
                             <h5 class="fw-bolder">{{product.name}}</h5>
                             <!-- Product price-->
-                           {{product.unit_price}}
+                           <h5 {{product-.unit_price}}></h5>
                         </div>
                     </div>
                     <!-- Product actions-->
@@ -29,32 +29,9 @@
                     </div>
                 </div>
             </div>
+
+
+
+
     </div>
 </template>
-
-<script>
-    export default {
-        mounted() {
-            this.loadAllProducts();
-
-        },
-        data:function(){
-                return {
-                products:[]
-                }
-
-        },
-        methods:{
-            loadAllProducts:function(){
-                axios.get('/api/products')
-                .then(response=>{
-                    this.products=response.data
-                    console.log(this.products);
-                     })
-                .catch(error=>console.log(error));
-
-
-
-        }
-    }}
-</script>
