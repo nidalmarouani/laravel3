@@ -41,3 +41,7 @@ Route::middleware(['auth','checkStatus'])->group(function () {
     Route::resource('/customers', 'Admin\CustomerController');
 
 });
+
+Route::get('/product', function () {
+      return view('productshop');
+  });
